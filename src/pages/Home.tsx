@@ -240,6 +240,7 @@ export default function Home() {
       </section>
 
       {/* 2. FEATURED STUDY CASE SECTION */}
+      {featuredStudyCases.length > 0 && (
       <section 
         id="featured-study-case-section" 
         ref={featuredStudyCaseRef}
@@ -330,8 +331,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* 3. FEATURED PROJECTS SECTION */}
+      {featuredProjects.length > 0 && (
       <section 
         id="featured-projects-section" 
         ref={featuredProjectsRef}
@@ -429,8 +432,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* 4. TESTIMONIAL SECTION */}
+      {featuredTestimonials.length > 0 && (
       <section 
         id="testimonials-section" 
         ref={testimonialsRef}
@@ -495,8 +500,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* 5. PARTNER/KLIEN SECTION */}
+      {partnersData.length > 0 && (
       <section 
         id="partners-section" 
         ref={partnersRef}
@@ -531,6 +538,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
     </div>
     </>

@@ -6,6 +6,7 @@ import CTA from "../components/CTA";
 import ShareButtons from "../components/ShareButtons";
 import Head from "../components/Head";
 import { trackCardClick } from "../lib/analytics";
+import EmptyState from "../components/EmptyState";
 
 export default function StudyCase() {
   const { slug: selectedSlug } = useParams();
@@ -231,6 +232,12 @@ export default function StudyCase() {
         </div>
 
         {/* List of Study Cases */}
+        {studyCasesData.length === 0 ? (
+          <EmptyState
+            title="Belum ada study case dipublikasikan"
+            description="Saya sedang menyusun studi kasus yang mendalam soal cara saya menangani sebuah masalah. Silakan cek kembali dalam waktu dekat."
+          />
+        ) : (
         <div className="space-y-8">
           {studyCasesData.map((sc) => (
             <article
@@ -303,6 +310,7 @@ export default function StudyCase() {
             </article>
           ))}
         </div>
+        )}
 
       </div>
     </div>

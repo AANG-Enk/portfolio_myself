@@ -4,6 +4,7 @@ import { profileData, workExperiencesData } from "../data";
 import Head from "../components/Head";
 import { trackCvDownload } from "../lib/analytics";
 import { useSectionView } from "../lib/useSectionView";
+import EmptyState from "../components/EmptyState";
 
 export default function About() {
   const profileRef = useSectionView<HTMLElement>("about_profile_section");
@@ -97,6 +98,12 @@ export default function About() {
           </div>
 
           {/* Timeline Wrapper */}
+          {workExperiencesData.length === 0 ? (
+            <EmptyState
+              title="Riwayat pengalaman kerja segera hadir"
+              description="Saya sedang menyusun rekam jejak profesional saya di sini."
+            />
+          ) : (
           <div id="experience-timeline" className="relative pl-6 sm:pl-8 border-l border-neutral-300 ml-4 space-y-12">
             {workExperiencesData.map((exp, idx) => {
               const isPresent = exp.end_date.toLowerCase() === "present";
@@ -175,6 +182,7 @@ export default function About() {
               );
             })}
           </div>
+          )}
         </section>
 
       </div>

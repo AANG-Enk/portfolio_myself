@@ -5,6 +5,7 @@ import { projectsData } from "../data";
 import CTA from "../components/CTA";
 import Head from "../components/Head";
 import { trackCardClick } from "../lib/analytics";
+import EmptyState from "../components/EmptyState";
 
 export default function Projects() {
   const { slug: selectedSlug } = useParams();
@@ -228,6 +229,12 @@ export default function Projects() {
         </div>
 
         {/* Grid List */}
+        {projectsData.length === 0 ? (
+          <EmptyState
+            title="Belum ada project dipublikasikan"
+            description="Saya sedang menyiapkan dokumentasi project terbaik saya. Silakan cek kembali dalam waktu dekat, atau hubungi saya langsung untuk melihat portofolio lengkap."
+          />
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project) => (
             <article
@@ -295,6 +302,7 @@ export default function Projects() {
             </article>
           ))}
         </div>
+        )}
 
       </div>
     </div>

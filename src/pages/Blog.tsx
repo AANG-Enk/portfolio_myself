@@ -5,6 +5,7 @@ import { blogPostsData } from "../data";
 import ShareButtons from "../components/ShareButtons";
 import Head from "../components/Head";
 import { trackCardClick } from "../lib/analytics";
+import EmptyState from "../components/EmptyState";
 
 export default function Blog() {
   const { slug: selectedSlug } = useParams();
@@ -154,6 +155,12 @@ export default function Blog() {
         </div>
 
         {/* List: card horizontal (thumbnail kiri, judul+excerpt kanan) */}
+        {blogPostsData.length === 0 ? (
+          <EmptyState
+            title="Belum ada artikel dipublikasikan"
+            description="Saya sedang menulis artikel pertama. Pantau terus halaman ini, atau follow media sosial saya untuk update terbaru."
+          />
+        ) : (
         <div className="space-y-8 max-w-4xl">
           {blogPostsData.map((post) => (
             <article
@@ -222,6 +229,7 @@ export default function Blog() {
             </article>
           ))}
         </div>
+        )}
 
       </div>
     </div>
