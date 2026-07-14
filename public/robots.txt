@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Menghindari pengindeksan file sementara atau file konfigurasi
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /coverage/
+Disallow: /.env
+
+# Lokasi berkas Sitemap
+Sitemap: https://farhanmohaemin.dev/sitemap.xml

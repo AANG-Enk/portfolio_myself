@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-page-bg: #FAFBF8;
+  --color-card-bg: #F0F5EB;
+  
+  --color-sky-50: #F0F5EB;
+  --color-sky-100: #E1EAD5;
+  --color-sky-200: #CCDAB9;
+  --color-sky-400: #558231;
+  --color-sky-800: #2B4C17;
+  --color-sky-900: #1A2F0F;
+  
+  --color-forest-50: #F0F5EB;
+  --color-forest-400: #558231;
+  --color-forest-800: #2B4C17;
+  
+  --color-neutral-50: #FAFBF8;
+  --color-neutral-300: #D0CECB;
+  --color-neutral-500: #8C8A84;
+  --color-neutral-700: #54524C;
+  --color-neutral-900: #22201C;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Forest-themed, High-Contrast Dark Mode Custom Variable Overrides */
+  .dark {
+    --color-page-bg: #0C120A; /* Deep dark forest canvas */
+    --color-card-bg: #141E10; /* Lighter deep forest green card background */
+    
+    --color-sky-50: #1C2B18; /* Darker accent/hover bg */
+    --color-sky-100: #293F22;
+    --color-sky-200: #3D5F33;
+    --color-sky-400: #7DBA4E; /* High-contrast bright green for focus and highlights */
+    --color-sky-800: #A3E678; /* High-contrast light green for text/titles */
+    --color-sky-900: #C2F0A3; /* Extra bright green */
+    
+    --color-forest-50: #1C2B18;
+    --color-forest-400: #7DBA4E;
+    --color-forest-800: #A3E678;
+    
+    --color-neutral-50: #0C120A;
+    --color-neutral-300: #303B2C; /* Dark olive-border */
+    --color-neutral-500: #7D8878; /* Muted forest-gray */
+    --color-neutral-700: #C1C9BD; /* Readable body gray-green */
+    --color-neutral-900: #F4F6F3; /* High-contrast off-white */
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-page-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-sky-200);
+    border-radius: 9999px;
+    border: 2px solid var(--color-page-bg);
+    transition: background-color 0.2s;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-sky-400);
+  }
+
+  body {
+    @apply font-sans bg-page-bg text-neutral-900 antialiased selection:bg-sky-100 selection:text-sky-900;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Focus-visible state yang diwajibkan untuk aksesibilitas WCAG AA */
+  *:focus-visible {
+    outline: 2px solid var(--color-sky-400) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Inversi tombol bg-sky-800 (dari gelap di light mode menjadi terang di dark mode dengan teks gelap) */
+  .dark .bg-sky-800 {
+    background-color: var(--color-sky-400) !important;
+    color: var(--color-page-bg) !important;
+  }
+  .dark .bg-sky-800 * {
+    color: var(--color-page-bg) !important;
+  }
+  .dark .hover\:bg-sky-900:hover {
+    background-color: var(--color-sky-800) !important;
+  }
+
+  /* Overrides for hardcoded neutral bg and text elements */
+  .dark .bg-white {
+    background-color: var(--color-card-bg) !important;
+  }
+  .dark .bg-neutral-50 {
+    background-color: var(--color-page-bg) !important;
+  }
+  .dark .bg-neutral-100 {
+    background-color: var(--color-sky-50) !important;
+  }
+  .dark .border-white {
+    border-color: var(--color-card-bg) !important;
+  }
+  .dark .border-neutral-300 {
+    border-color: var(--color-neutral-300) !important;
+  }
+  .dark .text-neutral-900 {
+    color: var(--color-neutral-900) !important;
+  }
+  .dark .text-neutral-800 {
+    color: var(--color-neutral-900) !important;
+  }
+  .dark .text-neutral-700 {
+    color: var(--color-neutral-700) !important;
+  }
+  .dark .text-neutral-500 {
+    color: var(--color-neutral-500) !important;
+  }
+
+  /* Menghormati pengaturan prefers-reduced-motion dari pengguna */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+    }
+  }
+}
+
+/* Utilitas tambahan */
+.container-custom {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
