@@ -12,6 +12,7 @@ export interface Profile {
   bio: string;
   email: string;
   whatsapp_number: string;
+  cv_url?: string;
   social_media: SocialMedia[];
 }
 

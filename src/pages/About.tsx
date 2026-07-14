@@ -10,11 +10,10 @@ export default function About() {
   const profileRef = useSectionView<HTMLElement>("about_profile_section");
   const experienceRef = useSectionView<HTMLElement>("work_experience_section");
 
-  const handleDownloadCV = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleDownloadCV = () => {
     trackCvDownload();
-    // Simulasi unduhan CV yang bersih
-    alert("Mengunduh CV Farhan Mohaemin Saparidja (Format PDF)...");
+    // Tidak perlu preventDefault/window.open manual — link asli sudah ada di href
+    // (lihat <a href={profileData.cv_url}> di bawah), ini cuma catat event-nya ke GTM.
   };
 
   return (
@@ -73,7 +72,9 @@ export default function About() {
             <div className="pt-4">
               <a
                 id="download-cv-btn"
-                href="#download-cv"
+                href={profileData.cv_url}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={handleDownloadCV}
                 className="inline-flex items-center justify-center gap-2 bg-sky-800 text-white font-medium hover:bg-sky-900 transition-colors focus-visible:outline-2 focus-visible:outline-sky-400 focus-visible:outline-offset-2"
                 style={{ borderRadius: "10px", padding: "11px 20px" }}

@@ -7,6 +7,7 @@ export const profileData: Profile = {
   bio: "Halo! Saya Farhan. Saya senang membantu merancang dan membangun website yang tidak hanya terlihat cantik dan alami, tetapi juga terasa sangat ringan dan nyaman saat digunakan. Bagi saya, website terbaik adalah website yang ramah, mudah dipahami, dan bisa diakses oleh siapa saja.",
   email: "farhanmohaeminsaparidja@gmail.com",
   whatsapp_number: "628979060191",
+  cv_url: "https://drive.google.com/uc?export=download&id=GANTI_DENGAN_FILE_ID_KAMU",
   social_media: [
     {
       platform: "GitHub",
